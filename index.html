@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <link
+            rel="shortcut icon"
+            href="https://raw.githubusercontent.com/sebastian-reyes/QuieresSerMiNovia-CSharp/master/img/icono.ico"
+            type="image/x-icon"
+        />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Propuesta</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                background-image: url("https://raw.githubusercontent.com/sebastian-reyes/QuieresSerMiNovia-CSharp/master/img/FondoPregunta.jpg");
+                background-size: 100% 100%;
+                background-repeat: none;
+            }
+
+            .box {
+                padding: 10px;
+            }
+
+            .img {
+                width: 100px;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .question {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            button {
+                padding: 10px 35px;
+                transition: padding 0.25s;
+            }
+
+            button:hover {
+                padding: 15px 40px;
+            }
+
+            @keyframes throb {
+                0% {
+                    transition: transform 0.5s, filter 0.7s;
+                }
+
+                50% {
+                    transform: scale(1.2);
+                    filter: brightness(50%);
+                }
+
+                100% {
+                    transform: scale(1);
+                    filter: brightness(100%);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h2>¿Quieres ser mi novia?</h2>
+        </div>
+
+        <div class="box img">
+            <img
+                id="heart"
+                src="https://raw.githubusercontent.com/sebastian-reyes/QuieresSerMiNovia-CSharp/master/img/pngocean.com.png"
+                alt="Dibujo de un corazón"
+            />
+        </div>
+
+        <div class="box question">
+            <div class="box">
+                <button id="yes">si</button>
+            </div>
+
+            <div class="box">
+                <button id="no">no</button>
+            </div>
+        </div>
+
+        <script>
+            const yes = document.getElementById("yes");
+            const no = document.getElementById("no");
+            const heart = document.getElementById("heart");
+
+            yes.addEventListener("click", () => {
+                answer();
+            });
+
+            no.addEventListener("mouseover", () => {
+                no.textContent = "si";
+            });
+
+            no.addEventListener("touchstart", () => {
+                no.textContent = "si";
+            });
+
+            no.addEventListener("mouseleave", () => {
+                no.textContent = "no";
+            });
+
+            no.addEventListener("touchend", () => {
+                no.textContent = "no";
+            });
+
+            no.addEventListener("click", () => {
+                no.textContent = "si";
+                answer();
+            });
+
+            heart.addEventListener("mouseover", () => {
+                heart.style.animation = "throb 1s infinite";
+            });
+
+            heart.addEventListener("click", () => {
+                heart.style.animation = "throb 1s infinite";
+
+                setTimeout(() => {
+                    heart.style.animation = "";
+                }, 3000);
+            });
+
+            heart.addEventListener("mouseleave", () => {
+                heart.style.animation = "";
+            });
+
+            function answer() {
+                document.body.innerHTML = "<h1>Gracias por aceptar</h1>";
+                document.body.style.backgroundImage = `url("https://raw.githubusercontent.com/sebastian-reyes/QuieresSerMiNovia-CSharp/master/img/FondoRespuesta.jpg")`;
+                document.body.style.backgroundSize = "100% 100%";
+            }
+
+            /**@type {HTMLMetaElement} */
+            const meta = document.getElementById("meta");
+
+            meta.content = `width=${innerWidth}px, height=${innerHeight}px, initial-scale=1.0`;
+        </script>
+    </body>
+</html>
